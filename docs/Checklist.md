@@ -26,6 +26,7 @@
 ## **Phase 2: The AI "Brain" — Model Training & Optimization**
 
 *Focus: Developing the intelligence layers for vision, navigation, and safety.*
+
 **[ ] Vision: YOLOv11-Nano Implementation**
 * Train backbone for real-time Pakistani product recognition.
 * **Visual Completion Sub-model:** Train a lightweight Autoencoder for occluded label inference.
