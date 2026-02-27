@@ -137,3 +137,13 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# AI/ML specific
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+datasets/
+*.pth
+*.h5
+*.tflite
