@@ -52,3 +52,28 @@ git clone [https://github.com/malaikajunaid/Seevia.git](https://github.com/malai
 
 # Install dependencies
 npm install
+```
+
+---
+
+## 📅 Project Roadmap & Progress Tracking
+
+> This section tracks the daily development and research milestones for the Seevia ecosystem.
+
+### Phase 1: Perception & Core Logic (Current Focus)
+- [x] Functional Requirements & Mockup-based Analysis.
+- [ ] **Research:** Literature review on Zero-Shot Indoor Navigation.
+- [ ] **Module 2 & 5:** Implement on-device Intent Detection and Motion Sensor calibration.
+- [ ] **Module 3:** Dataset curation for local retail products.
+- [ ] **Vision:** Fine-tuning OCR engines for regional product packaging.
+
+### Phase 2: Intelligence & Navigation
+- [ ] **Module 4:** Designing the Deep Q-Network (DQN) for store navigation logic.
+- [ ] **RL Agent:** Implementation of "Imagine-and-Align" strategy for zero-shot mapping.
+- [ ] **Module 1:** User profiling and behavioral feedback loop integration.
+
+### Phase 3: Deployment & Validation
+- [ ] **Optimization:** Model quantization for `.tflite` mobile inference.
+- [ ] **Module 6:** Real-time volunteer matching via Firebase Geofencing.
+- [ ] **UAT:** User Acceptance Testing with voice-first UI protocols.
+- [ ] **Publication:** Finalize research paper for workshop submission.
