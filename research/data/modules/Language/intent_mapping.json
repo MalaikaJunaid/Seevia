@@ -1,0 +1,69 @@
+{
+  "version": "1.0.0",
+  "target_mart": "Save Mart PWD",
+  "intents": {
+    "emergency_alert": {
+      "module": "M5_Safety",
+      "action": "triggerSOS",
+      "priority": "CRITICAL",
+      "entities": ["location_context"],
+      "triggers": ["help", "gir gaya", "chot", "emergency", "ambulance", "rescue", "bachao"]
+    },
+    "start_navigation": {
+      "module": "M4_Shopping",
+      "action": "beginAisleImagination",
+      "priority": "HIGH",
+      "entities": ["product_name", "aisle_id"],
+      "triggers": ["kahan hai", "le jao", "find", "aisle", "raste", "navigate", "kidher hai"]
+    },
+    "check_pantry": {
+      "module": "M1_Pantry",
+      "action": "queryInventory",
+      "priority": "MEDIUM",
+      "entities": ["product_name"],
+      "triggers": ["pantry", "kitchen", "kitna hai", "available", "check", "stock", "ghar mein"]
+    },
+    "object_id": {
+      "module": "M3_Vision",
+      "action": "identifyInView",
+      "priority": "MEDIUM",
+      "entities": [],
+      "triggers": ["kya hai", "identify", "what is this", "yeh kya hai", "haath mein"]
+    },
+    "read_text": {
+      "module": "M3_Vision",
+      "action": "triggerOCR",
+      "priority": "MEDIUM",
+      "entities": ["document_type"],
+      "triggers": ["parh ker sunao", "read this", "expiry date", "price kya hai", "label"]
+    },
+    "social_verification": {
+      "module": "M3_Vision",
+      "action": "identifyPerson",
+      "priority": "MEDIUM",
+      "entities": ["person_name"],
+      "triggers": ["kon hai", "who is in front", "is anyone there", "pehchano", "identify person"]
+    },
+    "describe_scene": {
+      "module": "M3_Vision",
+      "action": "generateCaption",
+      "priority": "LOW",
+      "entities": [],
+      "triggers": ["mahol kaisa hai", "describe", "scenery", "view", "context"]
+    },
+    "voice_control": {
+      "module": "M2_Voice",
+      "action": "adjustAudio",
+      "priority": "LOW",
+      "entities": ["volume_level", "speed"],
+      "triggers": ["volume kam karo", "slow down", "tez bolo", "shsh", "awaz"]
+    },
+    "system_status": {
+      "module": "Core",
+      "action": "getSystemInfo",
+      "priority": "LOW",
+      "entities": [],
+      "triggers": ["battery", "signal", "connected", "time", "date", "status"]
+    }
+  }
+}
