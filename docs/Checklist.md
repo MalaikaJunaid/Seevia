@@ -10,7 +10,7 @@
 * **Generative Visual Completion:** Create "Occluded Product" subsets (blocked by hands/blur) for training.
 
 
-**[ ] Module 5: Synthetic Motion Dataset (Imagine-to-Learn)**
+**[x] Module 5: Synthetic Motion Dataset (Imagine-to-Learn)**
 * Develop a **GAN/Simulation script** to generate 3-axis accelerometer/gyroscope patterns.
 * Simulate diverse "Fall" scenarios and "Walking" patterns to solve data scarcity.
 
@@ -39,7 +39,7 @@
 * Integrate **Cosine Similarity Matching** for Zero-Shot semantic navigation.
 
 
-**[ ] Safety: Sensor Fusion & Anomaly Detection**
+**[x] Safety: Sensor Fusion & Anomaly Detection**
 * Train a **1D-CNN or Random Forest** classifier on synthetic and real sensor data.
 * Implement **Predictive Danger Assessment** for disorientation (walking in circles/sudden stops).
 
