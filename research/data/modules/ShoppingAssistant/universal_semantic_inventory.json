@@ -1,0 +1,50 @@
+{
+  "semantic_inventory": {
+    "Zone_Staples_Grains": {
+      "name": "Pulses, Flour & Basic Grains",
+      "sub_categories": {
+        "Flour_Aata": ["Aata", "Maida", "Chakki Flour", "Fine Flour", "Whole Wheat"],
+        "Rice_Chaawal": ["Basmati", "Sela", "Tota Rice", "Steamed Rice"],
+        "Pulses_Daalyn": ["Daal Chana", "Daal Moong", "Daal Mash", "Lentils", "Gram Flour", "Baisan"],
+        "Sugar_Salt": ["White Sugar", "Brown Sugar", "Shakar", "Iodized Salt", "Kala Namak"]
+      },
+      "major_pak_brands": ["Guard", "Mughal", "Faletti", "Sunridge", "National", "Shan"]
+    },
+    "Zone_Breakfast_Dairy": {
+      "name": "Tea, Milk & Morning Essentials",
+      "sub_categories": {
+        "Tea_Chai": ["Black Tea", "Green Tea", "Dust Tea", "Tea Bags", "Kashmiri Chai"],
+        "Milk_Dairy": ["UHT Milk", "Powder Milk", "Condensed Milk", "Tea Whitener", "Cream"],
+        "Cereals": ["Cornflakes", "Chocos", "Oats", "Muesli", "Porridge"]
+      },
+      "major_pak_brands": ["Tapal", "Lipton", "Supreme", "Vital", "Olpers", "Milkpak", "EveryDay", "Nido", "Fauji"]
+    },
+    "Zone_Condiments_Spices": {
+      "name": "Spices, Sauces & Preservatives",
+      "sub_categories": {
+        "Spices_Masala": ["Red Chili", "Turmeric", "Coriander Powder", "Recipe Mixes", "Chaat Masala"],
+        "Sauces_Spreads": ["Ketchup", "Garlic Mayo", "Honey", "Jam", "Chocolate Spread", "GG Paste"],
+        "Canned_Food": ["Olives", "Mushrooms", "Sweet Corn", "Chickpeas", "Fruit Cocktail"]
+      },
+      "major_pak_brands": ["Shan", "National", "Mehran", "Mitchells", "Youngs", "Salman", "Mother's Pride"]
+    },
+    "Zone_Snacks_Beverages": {
+      "name": "Confectionery, Chips & Drinks",
+      "sub_categories": {
+        "Snacks": ["Potato Chips", "Nimko", "Popcorn", "Peanuts", "Crackers"],
+        "Biscuits": ["Cookies", "Wafers", "Sandwich Biscuits", "Glucose Biscuits"],
+        "Drinks": ["Fizzy Drinks", "Juices", "Nectars", "Mineral Water", "Energy Drinks"]
+      },
+      "major_pak_brands": ["Lays", "Kurkure", "Super Crisp", "Sooper", "Rio", "Prince", "Peek Freans", "Candi", "Rooh Afza", "Shezan"]
+    },
+    "Zone_Household_Cleaning": {
+      "name": "Laundry, Dishwash & Home Care",
+      "sub_categories": {
+        "Laundry": ["Detergent Powder", "Washing Bar", "Fabric Softener"],
+        "Dishwash": ["Dishwash Bar", "Liquid Dishwash", "Scrubbers", "Steel Wool"],
+        "Home_Hygiene": ["Toilet Cleaner", "Floor Cleaner", "Glass Cleaner", "Air Freshener", "Insecticide"]
+      },
+      "major_pak_brands": ["Surf Excel", "Ariel", "Brite", "Bonus", "Vim", "Lemon Max", "Harpic", "Dettol", "Mortein", "Tyfon"]
+    }
+  }
+}
