@@ -63,7 +63,7 @@ npm install
 ### Phase 1: Perception & Core Logic (Current Focus)
 - [x] Functional Requirements & Mockup-based Analysis.
 - [ ] **Research:** Literature review on Zero-Shot Indoor Navigation.
-- [ ] **Module 2 & 5:** Implement on-device Intent Detection and Motion Sensor calibration.
+- [x] **Module 2 & 5:** Implement on-device Intent Detection and Motion Sensor calibration.
 - [ ] **Module 3:** Dataset curation for local retail products.
 - [ ] **Vision:** Fine-tuning OCR engines for regional product packaging.
 
