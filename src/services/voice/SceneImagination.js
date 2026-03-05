@@ -1,31 +1,36 @@
 /**
- * SceneImagination.js: Implements Generative Visual Completion logic.
- * Bridges the gap between Voice (M2) and Vision (M4).
+ * SceneImagination.js: Enhanced Research Version
+ * Implements "Seeing Beyond the Seen" with Bilingual Support.
  */
 
 import storeMap from '../../assets/data/save_mart_pwd_map.json';
 
 export default class SceneImagination {
   /**
-   * Generates a descriptive 'filling' when camera data is poor.
-   * @param {string} lastKnownAisle - The last valid coordinate from the Vision module.
-   * @param {boolean} isBlurry - Flag indicating low-confidence vision input.
+   * @param {string} lastKnownAisle - Aisle ID from Vision module[cite: 83].
+   * @param {boolean} isBlurry - Low-confidence trigger[cite: 102].
+   * @param {string} userQuery - Optional: To match items semantically[cite: 110].
    */
-  static imagine(lastKnownAisle, isBlurry = false) {
+  static imagine(lastKnownAisle, isBlurry = false, userQuery = "") {
     const aisleData = storeMap.aisle_data[lastKnownAisle];
 
     if (!aisleData) {
-      return "I'm lost in the map. Please stay near the entrance stairs for a reset."; [cite: 105]
+      return "Main map se bhatak gayi hun. Stairs ke kareeb jayein reset ke liye."; [cite: 105]
     }
 
-    // Extract items for generative filling
-    const items = aisleData.items.map(i => i.en).join(", "); [cite: 83]
+    // 1. Extract Bilingual Items (English & Roman Urdu) [cite: 67, 175]
+    const itemsEn = aisleData.items.map(i => i.en).join(", ");
+    const itemsUr = aisleData.items.map(i => i.ur).join(", ");
 
+    // 2. Logic: If blurry, perform "Generative Filling" [cite: 44, 112]
     if (isBlurry) {
-      // Research Angle: Seeing Beyond the Seen (Generative Logic)
-      return `The view is blurry, but I can imagine this spot. You are in ${lastKnownAisle.replace('_', ' ')}. This area usually contains ${items}.`; [cite: 6, 112]
+      return `The camera is blurry, but I am imagining the scene. [cite: 6] 
+              You are in ${lastKnownAisle.replace('_', ' ')}. [cite: 99]
+              Yahan shayad ${itemsUr} rakha hua hai. [cite: 49]`; 
     }
 
-    return `You are at ${lastKnownAisle.replace('_', ' ')}. I can see ${items} clearly.`; [cite: 102]
+    // 3. Logic: Standard identification [cite: 107]
+    return `You are at ${lastKnownAisle.replace('_', ' ')}. [cite: 109]
+            I can see ${itemsEn} clearly on the shelves. [cite: 102]`;
   }
 }
