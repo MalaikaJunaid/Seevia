@@ -69,7 +69,7 @@ npm install
 
 ### Phase 2: Intelligence & Navigation
 - [ ] **Module 4:** Designing the Deep Q-Network (DQN) for store navigation logic.
-- [ ] **RL Agent:** Implementation of "Imagine-and-Align" strategy for zero-shot mapping.
+- [x] **RL Agent:** Implementation of "Imagine-and-Align" strategy for zero-shot mapping.
 - [ ] **Module 1:** User profiling and behavioral feedback loop integration.
 
 ### Phase 3: Deployment & Validation
