@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, StyleSheet, Animated } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
-// Theme & Services
-import { DARK_THEME as theme } from '../../theme/colors'; 
-import { Button } from '../../components/common/Button';
-import { Input } from '../../components/common/Input';
-import TtsService from '../../services/voice/TtsService';
-import WakePhraseListener from '../../services/voice/WakePhraseListener';
-import { db } from '../../config/firebaseConfig';
-import { doc, setDoc } from "firebase/firestore";
+// Refactored Services & Constants
+import { colors } from '@/src/constants/colors'; 
+import { Button } from '@/src/components/common/Button';
+import { Input } from '@/src/components/common/Input';
+import { TextToSpeechService } from '@/src/services/voice/textToSpeech.service';
+import { WakeWordService } from '@/src/services/voice/wakeWord.service';
+import { AuthService } from '@/src/services/firebase/auth.service';
+import { FirestoreService } from '@/src/services/firebase/firestore.service';
+import { hapticService } from '@/src/services/common/haptic.service';
 
 const TOTAL_STEPS = 7;
 
@@ -19,7 +20,6 @@ export default function OnboardingScreen() {
   const [step, setStep] = useState(1);
   const [micStatus, setMicStatus] = useState<'idle' | 'listening'>('idle');
   
-  // Module 1: User Profile State
   const [profile, setProfile] = useState({
     name: '',
     language: 'English',
@@ -27,6 +27,10 @@ export default function OnboardingScreen() {
     allergies: '',
     emergencyContact: ''
   });
+
+  useEffect(() => {
+    announceStep(1);
+  }, []);
 
   const nextStep = () => {
     if (step < TOTAL_STEPS) {
@@ -38,68 +42,72 @@ export default function OnboardingScreen() {
     }
   };
 
-  // Module 2: Voice Feedback for Accessibility
   const announceStep = (stepNumber: number) => {
     const messages = [
       "", "Welcome to Seevia", "Select your language", "Voice calibration",
       "Emergency contact", "Health profile", "Allergies check", "Ready to go"
     ];
-    TtsService.speak(messages[stepNumber]);
+    TextToSpeechService.speak(messages[stepNumber]);
   };
 
-  // Module 2: Hardware Interaction (Calibration)
-  const startCalibration = () => {
+  const startCalibration = async () => {
     setMicStatus('listening');
-    TtsService.speak("Please say: Hey Seevia.");
+    await TextToSpeechService.speak("Please say: Hey Seevia.");
     
-    WakePhraseListener.startListening(() => {
+    // Using refactored wakeWord service
+    WakeWordService.startListening(() => {
       setMicStatus('idle');
-      TtsService.speak("Voice recognized. Great job!");
+      hapticService.trigger('success');
+      TextToSpeechService.speak("Voice recognized. Great job!");
       nextStep();
     });
   };
 
-  // Module 1 & 3: Firebase Persistence
   const handleFinalSave = async () => {
+    const user = AuthService.getCurrentUser();
+    if (!user) return;
+
     try {
-      // Logic: Save profile to Firebase to be used by HealthGuard later
-      await setDoc(doc(db, "users", "current_user"), {
+      // Logic: Persist profile using unified Firestore service
+      await FirestoreService.setDocument('users', user.uid, {
         ...profile,
         allergies: profile.allergies.split(',').map(s => s.trim()),
         setupComplete: true
       });
-      TtsService.speak("Profile saved. Opening your dashboard.");
+      
+      hapticService.trigger('success');
+      await TextToSpeechService.speak("Profile saved. Opening your dashboard.");
       router.replace('/(tabs)/home');
     } catch (e) {
-      TtsService.speak("Storage error. Please try again.");
+      TextToSpeechService.speak("Storage error. Please try again.");
     }
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       {/* Progress Header */}
       <View style={styles.header}>
-        <View style={[styles.progressTrack, { backgroundColor: theme.cardBorder }]}>
-          <View style={[styles.progressFill, { backgroundColor: theme.primary, width: `${(step/TOTAL_STEPS)*100}%` }]} />
+        <View style={[styles.progressTrack, { backgroundColor: colors.surface }]}>
+          <View style={[styles.progressFill, { backgroundColor: colors.primary, width: `${(step/TOTAL_STEPS)*100}%` }]} />
         </View>
-        <Text style={[styles.stepIndicator, { color: theme.textSecondary }]}>Step {step} of {TOTAL_STEPS}</Text>
+        <Text style={[styles.stepIndicator, { color: colors.textSecondary }]}>Step {step} of {TOTAL_STEPS}</Text>
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {step === 1 && (
           <View style={styles.stepView}>
-            <Ionicons name="eye-outline" size={80} color={theme.primary} />
-            <Text style={[styles.title, { color: theme.text }]}>I am Seevia</Text>
-            <Text style={[styles.subtitle, { color: theme.textSecondary }]}>Your eyes beyond the seen. Let's set up your environment.</Text>
+            <Ionicons name="eye-outline" size={80} color={colors.primary} />
+            <Text style={[styles.title, { color: colors.text }]}>I am Seevia</Text>
+            <Text style={[styles.subtitle, { color: colors.textSecondary }]}>Your eyes beyond the seen. Let's set up your environment.</Text>
           </View>
         )}
 
         {step === 3 && (
           <View style={styles.stepView}>
-            <Text style={[styles.title, { color: theme.text }]}>Voice Check</Text>
-            <View style={[styles.micCard, { backgroundColor: theme.card, borderColor: micStatus === 'listening' ? theme.primary : theme.cardBorder }]}>
-               <Ionicons name="mic" size={40} color={micStatus === 'listening' ? theme.primary : theme.textSecondary} />
-               <Text style={{color: theme.text}}>{micStatus === 'listening' ? "Listening for 'Hey Seevia'..." : "Tap to test microphone"}</Text>
+            <Text style={[styles.title, { color: colors.text }]}>Voice Check</Text>
+            <View style={[styles.micCard, { backgroundColor: colors.surface, borderColor: micStatus === 'listening' ? colors.primary : colors.border }]}>
+               <Ionicons name="mic" size={40} color={micStatus === 'listening' ? colors.primary : colors.textSecondary} />
+               <Text style={{color: colors.text}}>{micStatus === 'listening' ? "Listening for 'Hey Seevia'..." : "Tap to test microphone"}</Text>
             </View>
             <Button title="Start Calibration" onPress={startCalibration} style={styles.wideBtn} />
           </View>
@@ -107,21 +115,18 @@ export default function OnboardingScreen() {
 
         {step === 6 && (
           <View style={styles.stepView}>
-            <Text style={[styles.title, { color: theme.text }]}>Safety Guard</Text>
-            <Text style={[styles.subtitle, { color: theme.textSecondary }]}>List any allergies (comma separated) for the Shopping Assistant.</Text>
+            <Text style={[styles.title, { color: colors.text }]}>Safety Guard</Text>
+            <Text style={[styles.subtitle, { color: colors.textSecondary }]}>List any allergies for the Shopping Assistant.</Text>
             <Input 
-              placeholder="e.g. Peanuts, Dairy, Gluten" 
+              placeholder="e.g. Peanuts, Dairy" 
               value={profile.allergies}
               onChangeText={(t) => setProfile({...profile, allergies: t})}
             />
           </View>
         )}
-
-        {/* ... Rest of steps 2, 4, 5, 7 following same pattern ... */}
       </ScrollView>
 
-      {/* Navigation Footer */}
-      <View style={[styles.footer, { borderTopColor: theme.cardBorder }]}>
+      <View style={[styles.footer, { borderTopColor: colors.border }]}>
         {step > 1 && (
           <Button title="Back" variant="outline" onPress={() => setStep(step - 1)} style={{ flex: 1 }} />
         )}
