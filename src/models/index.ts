@@ -8,3 +8,5 @@ export * from './PantryItem';
 export * from './Product';
 export * from './User';
 export * from './VoiceCommand';
+export * from './ShoppingItem'; 
+export * from './Emergency';
