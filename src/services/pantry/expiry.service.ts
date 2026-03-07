@@ -6,6 +6,7 @@ import { logger } from '@/src/utils/logger';
 /**
  * Seevia Expiry Service
  * Background logic for monitoring food safety across the entire pantry.
+ * Centralizes detection of expired and expiring soon items.
  */
 class ExpiryService {
   private readonly MODULE = 'EXPIRY_SERVICE';
@@ -21,7 +22,8 @@ class ExpiryService {
   }
 
   /**
-   * Filters items that will expire within the configured warning threshold (e.g., 3 days).
+   * Filters items that will expire within the configured warning threshold.
+   * Default threshold is typically defined in APP_CONFIG.EXPIRY_WARNING_DAYS.
    */
   getUpcomingExpiries(items: PantryItem[]): PantryItem[] {
     return items.filter(item => {
