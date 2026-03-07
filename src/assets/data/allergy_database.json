@@ -1,0 +1,78 @@
+{
+  "version": "1.1.0",
+  "region": "Pakistan",
+  "last_updated": "2026-03-07",
+  "allergens": [
+    {
+      "id": "dairy",
+      "name": "Milk & Dairy",
+      "urdu_name": "دودھ اور دودھ کی بنی اشیاء",
+      "keywords": [
+        "milk", "doodh", "dairy", "butter", "makhan", "cheese", "paneer", 
+        "yogurt", "dahi", "whey", "casein", "lactose", "cream", "malai", 
+        "khoya", "ghee", "condensed milk", "milk powder"
+      ],
+      "severity": "high",
+      "audio_alert": "dairy_detected"
+    },
+    {
+      "id": "peanut",
+      "name": "Peanuts",
+      "urdu_name": "مونگ پھلی",
+      "keywords": [
+        "peanut", "mungphali", "arachis oil", "groundnut", "earth nut", 
+        "monkey nut", "goober", "mixed nuts"
+      ],
+      "severity": "critical",
+      "audio_alert": "peanut_detected"
+    },
+    {
+      "id": "gluten",
+      "name": "Gluten & Wheat",
+      "urdu_name": "گندم اور گلوٹین",
+      "keywords": [
+        "wheat", "gandum", "atta", "maida", "suji", "barley", "jau", 
+        "rye", "malt", "gluten", "semolina", "farina", "spelt"
+      ],
+      "severity": "high",
+      "audio_alert": "gluten_detected"
+    },
+    {
+      "id": "egg",
+      "name": "Eggs",
+      "urdu_name": "انڈے",
+      "keywords": [
+        "egg", "anda", "albumin", "globulin", "lecithin", "lysozyme", 
+        "mayonnaise", "meringue", "ovalbumin"
+      ],
+      "severity": "high",
+      "audio_alert": "egg_detected"
+    },
+    {
+      "id": "soy",
+      "name": "Soy & Soya",
+      "urdu_name": "سویا",
+      "keywords": [
+        "soy", "soya", "soybean", "tofu", "edamame", "miso", "lecithin", 
+        "vegetable protein"
+      ],
+      "severity": "medium",
+      "audio_alert": "soy_detected"
+    },
+    {
+      "id": "tree_nuts",
+      "name": "Tree Nuts",
+      "urdu_name": "میوہ جات",
+      "keywords": [
+        "almond", "badam", "walnut", "akhrot", "cashew", "kaju", 
+        "pistachio", "pista", "hazelnut", "pecan", "brazil nut"
+      ],
+      "severity": "critical",
+      "audio_alert": "nuts_detected"
+    }
+  ],
+  "common_triggers": {
+    "preservatives": ["sulfites", "benzoic acid", "nitrates"],
+    "additives": ["msg", "aspartame", "artificial color"]
+  }
+}
