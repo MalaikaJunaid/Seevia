@@ -1,0 +1,32 @@
+{
+  "version": "1.0.2",
+  "project": "Seevia Assistive AI",
+  "models": {
+    "product_recognizer": {
+      "input_shape": [1, 224, 224, 3],
+      "mean": [127.5, 127.5, 127.5],
+      "std": [127.5, 127.5, 127.5],
+      "confidence_threshold": 0.75,
+      "type": "quantized_uint8"
+    },
+    "fall_detector": {
+      "input_shape": [1, 50, 3],
+      "sampling_rate_hz": 50,
+      "window_size_ms": 1000,
+      "trigger_threshold": 0.85,
+      "gravity_constant": 9.81
+    },
+    "intent_engine": {
+      "sample_rate": 16000,
+      "buffer_size": 1024,
+      "vocabulary_size": 2500,
+      "max_sequence_length": 32
+    },
+    "aisle_navigation_dqn": {
+      "state_dim": 12,
+      "action_dim": 4,
+      "epsilon_greedy": 0.1,
+      "target_update_frequency": 100
+    }
+  }
+}
