@@ -1,49 +1,68 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import { useColorScheme } from 'react-native';
-import 'react-native-reanimated';
+import { useEffect, useState } from 'react';
+import { Stack, useRouter, useSegments } from 'expo-router';
+import { colors } from '@/src/constants/colors';
 
-// Import your custom theme
-import { DARK_THEME, LIGHT_THEME } from '../src/theme/colors';
-
-export const unstable_settings = {
-  // Ensure onboarding is considered in the initial route logic
-  initialRouteName: 'onboarding',
-};
+// Services
+import { AuthService } from '@/src/services/firebase/auth.service';
+import { TextToSpeechService } from '@/src/services/voice/textToSpeech.service';
+import { WakeWordService } from '@/src/services/voice/wakeWord.service';
+import { hapticService } from '@/src/services/common/haptic.service';
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  
-  // Create a navigation theme that matches your Seevia Branding
-  const CustomNavigationTheme = {
-    ...(colorScheme === 'dark' ? DarkTheme : DefaultTheme),
-    colors: {
-      ...(colorScheme === 'dark' ? DarkTheme.colors : DefaultTheme.colors),
-      primary: DARK_THEME.primary,
-      background: colorScheme === 'dark' ? DARK_THEME.background : LIGHT_THEME.background,
-      card: colorScheme === 'dark' ? DARK_THEME.card : LIGHT_THEME.card,
-      text: colorScheme === 'dark' ? DARK_THEME.text : LIGHT_THEME.text,
-      border: colorScheme === 'dark' ? DARK_THEME.cardBorder : LIGHT_THEME.cardBorder,
-    },
-  };
+  const segments = useSegments();
+  const router = useRouter();
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    // 1. Initialize Core Systems for Module 2 & 5
+    const initApp = async () => {
+      await TextToSpeechService.init();
+      await WakeWordService.init();
+      hapticService.trigger('success');
+      setIsReady(true);
+    };
+
+    initApp();
+
+    // 2. Setup Auth Guard
+    const unsubscribe = AuthService.onAuthStateChanged((user) => {
+      const inTabsGroup = segments[0] === '(tabs)';
+
+      if (!user && inTabsGroup) {
+        // Redirect to Login if not authenticated
+        router.replace('/auth/LoginScreen');
+      } else if (user && !inTabsGroup) {
+        // Redirect to Home if authenticated and trying to access auth screens
+        router.replace('/(tabs)/home');
+      }
+    });
+
+    return unsubscribe;
+  }, [segments]);
+
+  if (!isReady) return null; // Or a simple loading view
 
   return (
-    <ThemeProvider value={CustomNavigationTheme}>
-      <Stack screenOptions={{ 
+    <Stack
+      screenOptions={{
         headerShown: false,
-        animation: 'fade_from_bottom' 
-      }}>
-        {/* Module 1: Entry Point */}
-        <Stack.Screen name="onboarding" options={{ gestureEnabled: false }} />
-        
-        {/* Main App Tabs */}
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        
-        {/* Module 4: Shopping/Vision Modal */}
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Seevia Vision' }} />
-      </Stack>
-      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
-    </ThemeProvider>
+        contentStyle: { backgroundColor: colors.background },
+      }}
+    >
+      {/* Auth Group */}
+      <Stack.Screen name="auth" options={{ animation: 'fade' }} />
+
+      {/* Main Tabs Group */}
+      <Stack.Screen name="(tabs)" options={{ animation: 'slide_from_right' }} />
+
+      {/* Emergency Overlays (High Priority) */}
+      <Stack.Screen 
+        name="emergency" 
+        options={{ 
+          presentation: 'fullScreenModal',
+          animation: 'flip' 
+        }} 
+      />
+    </Stack>
   );
 }
