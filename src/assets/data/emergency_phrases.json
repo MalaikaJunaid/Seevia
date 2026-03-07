@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "language_support": ["en", "ur_roman"],
+  "sos_triggers": {
+    "english": [
+      "emergency",
+      "help me",
+      "i need help",
+      "call for help",
+      "sos sos",
+      "start emergency",
+      "i fell down",
+      "accident"
+    ],
+    "roman_urdu": [
+      "madad",
+      "bachao",
+      "emergency lagao",
+      "help chahiye",
+      "main gir gaya hoon",
+      "madad karo",
+      "shor machao"
+    ]
+  },
+  "cancellation_phrases": [
+    "stop",
+    "cancel",
+    "i am okay",
+    "thik hoon",
+    "band karo",
+    "rok do"
+  ],
+  "voice_responses": {
+    "confirmation": "Emergency mode activated. Notifying your trust circle in ten seconds.",
+    "urdu_confirmation": "Emergency mode shuru ho gaya hai. Aapki family ko das second mein ittalay di jaye gi.",
+    "cancelled": "Emergency cancelled. Returning to home."
+  }
+}
