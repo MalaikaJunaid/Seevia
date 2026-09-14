@@ -1,79 +1,173 @@
-# Seevia: AI-Driven Assistive Perception & Autonomous Navigation
+```markdown
+# Seevia: Voice-First Multimodal AI Ecosystem for Visually Impaired Autonomy
 
-[![Status](https://img.shields.io/badge/Status-In--Development-orange?style=flat-square)]()
+[![Status](https://img.shields.io/badge/Status-MVP--Achieved-success?style=flat-square)]()
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)]()
-[![Framework](https://img.shields.io/badge/Framework-React--Native-61DAFB?style=flat-square&logo=react)]()
-[![Stack](https://img.shields.io/badge/Stack-PyTorch--TensorFlow--FastAPI-EE4C2C?style=flat-square)]()
+[![Framework](https://img.shields.io/badge/Framework-React--Native%20%7C%20Expo-61DAFB?style=flat-square&logo=react)]()
+[![Backend](https://img.shields.io/badge/Cloud-Firebase%20Firestore%20%26%20Auth-FFA611?style=flat-square&logo=firebase)]()
+[![Edge AI](https://img.shields.io/badge/Edge%20AI-TFLite%20%7C%20PyTorch-EE4C2C?style=flat-square&logo=pytorch)]()
+[![Accessibility](https://img.shields.io/badge/Accessibility-WCAG%202.1%20AA-brightgreen?style=flat-square)]()
 
-**Seevia** is a multimodal AI ecosystem designed to empower visually impaired individuals through structured scene understanding and adaptive indoor navigation. By bridging the gap between Computer Vision and Sequential Decision Making, Seevia provides a "voice-first" interface to manage personal inventory and navigate dynamic retail environments.
-
----
-
-## 🏗️ System Dimensions
-
-### 1. Personal Inventory & Autonomous Shopping
-A closed-loop system for managing household essentials and optimizing the shopping experience.
-* **Pantry Manager:** Uses predictive modeling to track usage frequency and expiry.
-* **Shopping Assistant:** Employs **Reinforcement Learning (RL)** to optimize navigation paths in unmapped store layouts.
-
-### 2. Assistive Perception Engine
-A real-time sensory layer focused on environment interpretation and user safety.
-* **Scene Understanding:** **CNN-based** object detection and specialized **OCR** for product identification.
-* **Anomaly Detection:** Sensor-fusion AI to detect falls, disorientation, or unusual inactivity.
+**Seevia** is a voice-first, multimodal AI-powered mobile assistive platform developed at COMSATS University Islamabad to empower visually impaired persons (PWDs) to independently manage daily living, household inventories, retail navigation, and personal safety[cite: 1, 1]. Built to bridge the local accessibility gap in developing regions, Seevia eliminates dependence on human-in-the-loop subscriptions through an on-device, offline-resilient edge AI pipeline paired with a cloud fallback architecture[cite: 1].
 
 ---
 
-## 🧩 Core Modules
+## 🏗️ System Architecture & Cognitive Engine
 
-| Module | Technical Implementation |
-| :--- | :--- |
-| **1. AI Personalization** | Behavioral pattern analysis & ML-based user profiling. |
-| **2. NLP Interface** | Intent Detection & Speech-to-Text (STT) for natural voice commands. |
-| **3. Pantry Management** | OCR + classification models for automated inventory tracking. |
-| **4. Shopping Assistant** | RL-driven path optimization and similarity-based product retrieval. |
-| **5. Emergency Systems** | Motion sensor AI for real-time fall and danger detection. |
-| **6. Volunteer Matching** | Location-based optimization models for human-in-the-loop support. |
+Seevia operates on a **Three-Tier AI Fallback Architecture** designed for high availability and offline resilience on consumer-grade Android hardware[cite: 1]:
+
+
+```
+
+```
+                  +------------------------------------------+
+                  |   Input (Bilingual Audio / Video / IMU)  |
+                  +------------------------------------------+
+                                       |
+                                       v
+                  +------------------------------------------+
+                  |       Tier 1: On-Device Edge (TFLite)    |
+                  |   (YOLOv8-Nano, Anomaly SVM, FastText)   |
+                  +------------------------------------------+
+                                  /          \
+                   Confidence >= 0.75      Confidence < 0.75
+                                /              \
+                               v                v
+                 +--------------------+   +----------------------------+
+                 | Voice Synthesizer  |   | Tier 2: Cloud Inference    |
+                 | Direct TTS Output  |   | (HuggingFace Inference API)|
+                 +--------------------+   +----------------------------+
+                                                        |
+                                           Confidence < 0.75 / Fail
+                                                        |
+                                                        v
+                                          +----------------------------+
+                                          | Tier 3: Reasoning Fallback |
+                                          | (Google Vision API/Gemini) |
+                                          +----------------------------+
+                                                        |
+                                                        v
+                  +----------------------------------------------------+
+                  |    Trust Circle: Firebase Real-Time Data Sync      |
+                  |   (Firestore, FCM Dispatch, Storage, Twilio)       |
+                  +----------------------------------------------------+
+
+```
+
+```
+
+* **Tier 1 (On-Device Edge):** Quantized `.tflite` models execute locally with GPU/CPU delegate acceleration ($<120\text{ ms}$ latency), providing offline functionality for vision, NLP, and kinematic fall classification.
+* **Tier 2 (Cloud AI Models):** Hugging Face Inference APIs handle complex or ambiguous multilingual linguistic structures and secondary token classification[cite: 1].
+* **Tier 3 (High-Reasoning Cloud Services):** Google Cloud Vision API and Gemini serve as the final fallback for heavily distorted text, non-standard local packaging fonts, or scene resolution.
 
 ---
 
-## 🔬 Research Focus
-* **Generalization:** Implementing an "Imagine-to-See" strategy for Zero-Shot navigation in novel indoor settings.
-* **Edge AI:** Optimizing deep learning models via **TensorFlow Lite** for low-latency, on-device mobile inference.
-* **Data Robustness:** Training on a custom-curated dataset of regional retail products and diverse indoor conditions.
+## 🤖 Deployed AI Models & Empirical Evaluation
+
+| Module / Model ID | Architecture | Dataset & Scope | Key Performance Metrics | Deployment Format |
+| :--- | :--- | :--- | :--- | :--- |
+| **M-01: Product Recognizer** [`SEEVIA-LOCAL-PRODUCT-RECOGNIZER`](https://huggingface.co/malaikajunaid/seevia-local-product-recognizer) | YOLOv8-Nano | 5,722 images across 23 Pakistani product classes (Roboflow ACE & Image Recognition datasets) | **87.3% mAP@50**, 72.1% mAP@50-95, 91.0% real-world accuracy, 80ms mobile GPU latency | TFLite INT8 Quantized (6.2 MB) |
+| **M-02: ZeroShot Extractor** [`SEEVIA-ZEROSHOT-EXTRACTOR`](https://huggingface.co/malaikajunaid/SEEVIA-ZEROSHOT-EXTRACTOR) | DistilBERT Multilingual (`TokenClassification`) | Pakistani product labels annotated for Named Entity Recognition (NER) | **88.1% Overall F1-Score** (91.2% Brand Precision, 88.7% Expiry Recall, 84.3% Allergen F1) | TFLite FP16 (85 MB) |
+| **M-03: Intent Classifier** [`SEEVIA-INTENT-MODEL-IMPROVED`](https://huggingface.co/malaikajunaid/seevia-intent-model-improved) | FastText Embeddings + 2-Layer CNN + Dense Softmax | 1,000+ bilingual utterances across 5 core intent classes (`navigate`, `scan_product`, `pantry`, `emergency`, `volunteer`) | **87.4% Overall Accuracy** (85.1% Roman Urdu, 84.6% Code-switched Hinglish), $<200\text{ ms}$ latency | TFLite INT8 |
+| **M-04: Kinematic Fall Detector** [`SEEVIA-FALL-DETECTOR`](https://huggingface.co/malaikajunaid/seevia-fall-detector) | Ensemble: SVM (RBF Kernel) + Random Forest (200 trees) | SisFall Dataset (1,820 samples) + 240 custom phone-drop captures | **95.8% Overall Accuracy**, 94.3% Fall Recall, **4.2% False Alarm Rate** on phone drops | TFLite ($<100\text{ ms}$ window at 50Hz) |
+| **M-05: Aisle Navigator** [`SEEVIA-AISLE-NAVIGATION-DQN`](https://huggingface.co/malaikajunaid/SEEVIA-AISLE-NAVIGATION-DQN) | Dueling Deep Q-Network (MLP: 256-128-64) | 10,000 synthetic store topological layouts with turn penalties | **87.2% Navigation Success Rate**, 1.8% collision rate, 68% reduction in unnecessary $90^\circ$ turns | ONNX → TFLite |
 
 ---
 
-## 🛠️ Installation & Setup (WIP)
-Currently being built with **React Native** and **Expo**.
+## 🧩 Core Ecosystem Modules
 
-```bash
-# Clone the repository
-git clone [https://github.com/malaikajunaid/Seevia.git](https://github.com/malaikajunaid/Seevia.git)
+1. **Voice Command & NLP Interface:** Real-time speech understanding handling natural codeswitched Roman Urdu and English (e.g., *"Doodh ki expiry kya hai?"* or *"Mujhe aisle 3 le jao"*).
+2. **Smart Pantry Management:** Automated household inventory tracking using camera recognition and Google ML Kit OCR. Automatically flags expiring items ($\le 3$ days), cross-references user allergen profiles, and auto-generates replenishment shopping lists.
+3. **In-Store Shopping Assistant:** Camera-based object detection matched with reinforcement learning-driven path planning to direct users through aisles while avoiding static and dynamic obstacles.
+4. **Emergency Safety Hub & Safe Step:** Kinematic fall detection running continuously at 50Hz. Falls trigger an audible/haptic 15-second cancellation window before auto-dispatching GPS coordinates to emergency contacts via Twilio SMS and Firebase Cloud Messaging (FCM).
+5. **Volunteer Response Network:** Community-based emergency response dispatching proximity-based alerts within a 5 km radius if primary caregivers do not acknowledge an SOS within 60 seconds.
+6. **Adaptive Personalization:** Behavioral preference modeling utilizing Markov-chain analysis to predict consumption habits and tailor proactive voice suggestions.
 
-# Install dependencies
-npm install
+---
+
+## 🗄️ Firestore Database & Security Rules
+
+All entities are linked via Firebase Authentication `Auth_UID` with role-based access rules:
+
+```text
+/users/{Auth_UID}                       # Profile details, accessibility settings, health data, caregiver ID
+  ├── /pantryItems/{itemId}             # Item metadata, expiration timestamps, Base64/Storage URLs
+  ├── /shoppingLists/{listId}           # Auto-generated and manual shopping lists
+  ├── /ocrLogs/{logId}                  # Raw OCR captures and model inference audit logs
+  └── /voiceHistory/{id}                # Transcribed queries, mapped intents, and latency metrics
+/trust_circle/{circleId}                # Bidirectional verification link between PWD and Caregiver
+/emergency_logs/{logId}                 # Real-time SOS triggers, sensor telemetry, and GeoPoints
+/volunteers/{Auth_UID}                  # Verified volunteer availability, rating, and location updates
+/system_configs/app_settings            # Global runtime parameters (fallback thresholds, timeouts)
+
 ```
 
 ---
 
-## 📅 Project Roadmap & Progress Tracking
+## 🛠️ Installation & Environment Setup
 
-> This section tracks the daily development and research milestones for the Seevia ecosystem.
+### Prerequisites
 
-### Phase 1: Perception & Core Logic (Current Focus)
-- [x] Functional Requirements & Mockup-based Analysis.
-- [ ] **Research:** Literature review on Zero-Shot Indoor Navigation.
-- [x] **Module 2 & 5:** Implement on-device Intent Detection and Motion Sensor calibration.
-- [ ] **Module 3:** Dataset curation for local retail products.
-- [ ] **Vision:** Fine-tuning OCR engines for regional product packaging.
+* **Node.js:** $\ge$ 18.x
+* **Framework:** Expo CLI with EAS Build support
+* **Target Hardware:** Android device with minimum API Level 28 (Pie), rear camera, microphone, and IMU sensors
 
-### Phase 2: Intelligence & Navigation
-- [ ] **Module 4:** Designing the Deep Q-Network (DQN) for store navigation logic.
-- [x] **RL Agent:** Implementation of "Imagine-and-Align" strategy for zero-shot mapping.
-- [ ] **Module 1:** User profiling and behavioral feedback loop integration.
+### Installation
 
-### Phase 3: Deployment & Validation
-- [ ] **Optimization:** Model quantization for `.tflite` mobile inference.
-- [ ] **Module 6:** Real-time volunteer matching via Firebase Geofencing.
-- [ ] **UAT:** User Acceptance Testing with voice-first UI protocols.
-- [ ] **Publication:** Finalize research paper for workshop submission.
+1. **Clone the repository:**
+```bash
+git clone [https://github.com/MalaikaJunaid/Seevia.git](https://github.com/MalaikaJunaid/Seevia.git)
+cd Seevia
+
+```
+
+
+2. **Install dependencies:**
+```bash
+npm install
+
+```
+
+
+3. **Configure Environment Keys:**
+Create a `.env` file in the project root:
+```env
+FIREBASE_API_KEY=your_firebase_key
+FIREBASE_AUTH_DOMAIN=seevia-fypii.firebaseapp.com
+FIREBASE_PROJECT_ID=seevia-fypii
+FIREBASE_STORAGE_BUCKET=seevia-fypii.appspot.com
+FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+FIREBASE_APP_ID=your_app_id
+GOOGLE_VISION_API_KEY=your_vision_key
+DEEPGRAM_API_KEY=your_deepgram_key
+TWILIO_ACCOUNT_SID=your_twilio_sid
+TWILIO_AUTH_TOKEN=your_twilio_token
+TWILIO_PHONE_NUMBER=your_twilio_phone
+
+```
+
+
+4. **Start the Application:**
+```bash
+npx expo start
+
+```
+
+
+
+---
+
+## 👥 Research & Development Team
+
+* **Malaika Junaid** (CIIT/FA22-BAI-020/ISB) — *AI Lead & ML Engineer* — [GitHub](https://github.com/MalaikaJunaid) | [Hugging Face](https://www.google.com/search?q=https://huggingface.co/malaikajunaid)
+
+
+* **Syeda Aleeza Tahir** (CIIT/FA22-BAI-038/ISB) — *Lead System Architect & Front-end Developer*
+
+* **Project Supervisor:** **Dr. Samera Batool** — Department of Computer Science, COMSATS University Islamabad
+
+
+
+```
+
+```
