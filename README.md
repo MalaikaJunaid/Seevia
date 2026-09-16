@@ -68,7 +68,7 @@ Seevia operates on a **Three-Tier AI Fallback Architecture** designed for high a
 * **Voice Command & NLP Interface:** Real-time speech understanding handling natural codeswitched Roman Urdu and English (e.g., *"Doodh ki expiry kya hai?"* or *"Mujhe aisle 3 le jao"*).
 * **Smart Pantry Management:** Automated household inventory tracking using camera recognition and Google ML Kit OCR. Automatically flags expiring items (<= 3 days), cross-references user allergen profiles, and auto-generates replenishment shopping lists.
 * **In-Store Shopping Assistant:** Camera-based object detection matched with reinforcement learning-driven path planning to direct users through aisles while avoiding static and dynamic obstacles.
-* **Emergency Safety Hub & Safe Step:** Kinematic fall detection running continuously at 50Hz. Falls trigger an audible/haptic 15-second cancellation window before auto-dispatching GPS coordinates to emergency contacts via Twilio SMS and Firebase Cloud Messaging (FCM).
+* **Emergency Safety Hub & Safe Step:** Kinematic fall detection running continuously at 50Hz. Falls trigger an audible/haptic 15-second cancellation window before auto-dispatching GPS coordinates to emergency contacts via Firebase Cloud Messaging (FCM).
 * **Volunteer Response Network:** Community-based emergency response dispatching proximity-based alerts within a 5 km radius if primary caregivers do not acknowledge an SOS within 60 seconds.
 * **Adaptive Personalization:** Behavioral preference modeling utilizing Markov-chain analysis to predict consumption habits and tailor proactive voice suggestions.
 
@@ -121,17 +121,42 @@ npm install
 3. **Configure Environment Keys:**
 Create a `.env` file in the project root:
 ```env
-FIREBASE_API_KEY=your_firebase_key
-FIREBASE_AUTH_DOMAIN=seevia-fypii.firebaseapp.com
-FIREBASE_PROJECT_ID=seevia-fypii
-FIREBASE_STORAGE_BUCKET=seevia-fypii.appspot.com
-FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-FIREBASE_APP_ID=your_app_id
-GOOGLE_VISION_API_KEY=your_vision_key
-DEEPGRAM_API_KEY=your_deepgram_key
-TWILIO_ACCOUNT_SID=your_twilio_sid
-TWILIO_AUTH_TOKEN=your_twilio_token
-TWILIO_PHONE_NUMBER=your_twilio_phone
+# ---------------------------------------------------------
+# 🔐 Firebase (Core Backend)
+# ---------------------------------------------------------
+EXPO_PUBLIC_FIREBASE_API_KEY=your_firebase_key
+EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=seevia-fypii.firebaseapp.com
+EXPO_PUBLIC_FIREBASE_PROJECT_ID=seevia-fypii
+EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=seevia-fypii.appspot.com
+EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+EXPO_PUBLIC_FIREBASE_APP_ID=your_app_id
+
+# ---------------------------------------------------------
+# 🧠 AI / Cloud Inference Keys
+# ---------------------------------------------------------
+EXPO_PUBLIC_GOOGLE_CLOUD_API_KEY=your_google_vision_or_gemini_key
+EXPO_PUBLIC_DEEPGRAM_API_KEY=your_deepgram_key
+EXPO_PUBLIC_HUGGINGFACE_API_KEY=your_huggingface_key
+EXPO_PUBLIC_OPENAI_API_KEY=your_openai_key
+EXPO_PUBLIC_GEMINI_API_KEY=your_gemini_key
+
+# ---------------------------------------------------------
+# 🗺️ Navigation / Mapping
+# ---------------------------------------------------------
+EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN=your_mapbox_token
+
+# ---------------------------------------------------------
+# 🚨 SOS Alerts (Firebase Cloud Messaging)
+# ---------------------------------------------------------
+EXPO_PUBLIC_FCM_SERVER_KEY=your_fcm_server_key
+EXPO_PUBLIC_FCM_SENDER_ID=your_sender_id
+
+# ---------------------------------------------------------
+# ⚙️ App Environment
+# ---------------------------------------------------------
+EXPO_PUBLIC_APP_ENV=development
+EXPO_PUBLIC_DEBUG_MODE=true
+
 
 ```
 
@@ -148,6 +173,6 @@ npx expo start
 
 ## 👥 Research & Development Team
 
-* **Malaika Junaid** (CIIT/FA22-BAI-020/ISB) — *AI Lead & ML Engineer*  — [GitHub](https://github.com/MalaikaJunaid) | [Hugging Face](https://www.google.com/search?q=https://huggingface.co/malaikajunaid)
+* **Malaika Junaid** (CIIT/FA22-BAI-020/ISB) — *AI Lead & ML Engineer*  — [GitHub](https://github.com/MalaikaJunaid) | [Hugging Face]([https://www.google.com/search?q=https://huggingface.co/malaikajunaid](https://huggingface.co/malaikajunaid)
 * **Syeda Aleeza Tahir** (CIIT/FA22-BAI-038/ISB) — *Lead System Architect & Full-Stack Developer* 
 * **Project Supervisor:** **Dr. Samera Batool** — Department of Computer Science, COMSATS University Islamabad 
