@@ -1,5 +1,6 @@
 # Seevia: Voice-First Multimodal AI Ecosystem for Visually Impaired Autonomy
 > 🏆 **Winner:** Awarded **1st Prize in Artificial Intelligence FYP** at the **COMSATS Career Expo 2026**.
+[![Download APK](https://img.shields.io/badge/Download-APK-blue?style=for-the-badge&logo=android)](https://drive.google.com/file/d/1OYgzkxyoVW4f8brqlXX6AsYmIO3_so9b/view?usp=sharing)
 
 **Seevia** is a voice-first, multimodal AI-powered mobile assistive platform developed at COMSATS University Islamabad to empower visually impaired persons (PWDs) to independently manage daily living, household inventories, retail navigation, and personal safety. Built to bridge the local accessibility gap in developing regions, Seevia eliminates dependence on human-in-the-loop subscriptions through an on-device, offline-resilient edge AI pipeline paired with a cloud fallback architecture.
 
