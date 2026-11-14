@@ -1,0 +1,66 @@
+{
+  "expo": {
+    "name": "Seevia",
+    "slug": "seevia",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": false,
+    "scheme": "seevia",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTabletMode": false,
+      "userInterfaceStyle": "dark",
+      "bundleIdentifier": "com.seevia.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Seevia needs camera access to scan products and detect obstacles for visually impaired users.",
+        "NSMicrophoneUsageDescription": "Seevia needs microphone access for voice commands in Roman Urdu.",
+        "NSLocationWhenInUseUsageDescription": "Seevia needs location for emergency SOS and indoor navigation.",
+        "NSLocationAlwaysUsageDescription": "Seevia needs location for fall detection and emergency alerts.",
+        "NSMotionUsageDescription": "Seevia needs motion data for fall detection."
+      }
+    },
+    "android": {
+      "userInterfaceStyle": "dark",
+      "package": "com.seevia.app",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.SEND_SMS",
+        "android.permission.VIBRATE",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Seevia needs camera access to scan products and help you navigate"
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Seevia needs location for emergency SOS and navigation"
+        }
+      ],
+      [
+        "expo-sensors",
+        {
+          "motionPermission": "Seevia needs motion data for fall detection"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

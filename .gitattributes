@@ -1,0 +1,4 @@
+src/assets/models/*.pth filter=lfs diff=lfs merge=lfs -text
+src/assets/models/*.pt filter=lfs diff=lfs merge=lfs -text
+src/assets/models/*.tflite filter=lfs diff=lfs merge=lfs -text
+src/assets/models/intent_model_tflite filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,2 @@
+REM This file has been disabled - npm should be called directly without this wrapper
+REM The recursive calls in the wrapper were causing "Maximum setlocal recursion level reached" errors

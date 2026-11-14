@@ -1,0 +1,69 @@
+{
+  "version": "1.2.0",
+  "last_updated": "2026-03-07",
+  "categories": [
+    {
+      "id": "grains_staples",
+      "name": "Grains & Staples",
+      "urdu_name": "اناج اور بنیادی ضرورت",
+      "icon": "grain",
+      "items": [
+        "flour", "atta", "wheat", "gandum", "rice", "chawal", "sugar", "chini", 
+        "salt", "namak", "pulses", "daal", "lentils", "maida", "suji", "besan",
+        "oil", "ghee", "dalda", "sufi"
+      ]
+    },
+    {
+      "id": "beverages",
+      "name": "Beverages",
+      "urdu_name": "مشروبات",
+      "icon": "local-cafe",
+      "items": [
+        "tea", "chai", "tapal", "lipton", "coffee", "juice", "sharbat", "rooh afza", 
+        "jam-e-shirin", "water", "soda", "cold drink", "coca cola", "pepsi", 
+        "sprite", "fanta", "sting", "next cola", "gourmet"
+      ]
+    },
+    {
+      "id": "dairy_eggs",
+      "name": "Dairy & Eggs",
+      "urdu_name": "دودھ اور انڈے",
+      "icon": "water",
+      "items": [
+        "milk", "doodh", "olpers", "milkpak", "nestle", "nido", "everyday", 
+        "yogurt", "dahi", "cheese", "eggs", "anda", "butter", "makhan"
+      ]
+    },
+    {
+      "id": "snacks_biscuits",
+      "name": "Snacks & Bakery",
+      "urdu_name": "سنیکس اور بیکری",
+      "icon": "fastfood",
+      "items": [
+        "biscuits", "cookies", "sooper", "gala", "oreo", "chips", "lays", "kurkure", 
+        "nimko", "cake", "bread", "double roti", "rusk", "pappa"
+      ]
+    },
+    {
+      "id": "cleaning_laundry",
+      "name": "Cleaning & Laundry",
+      "urdu_name": "صفائی ستھرائی",
+      "icon": "wash",
+      "items": [
+        "soap", "sabun", "lux", "safeguard", "detergent", "surf", "washing powder", 
+        "ariel", "bonus", "brite", "dish soap", "max", "vim", "phenyl", "harpic", "cleaner"
+      ]
+    },
+    {
+      "id": "medical_hygiene",
+      "name": "Medical & Hygiene",
+      "urdu_name": "طبی اور صفائی",
+      "icon": "medical-services",
+      "items": [
+        "panadol", "paracetamol", "dispro", "ponstan", "bandage", "shampoo", 
+        "sunsilk", "head and shoulders", "toothpaste", "colgate", "sensodyne", 
+        "sanitizer", "dettol", "lifebuoy"
+      ]
+    }
+  ]
+}

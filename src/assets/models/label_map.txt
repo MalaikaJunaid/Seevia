@@ -1,0 +1,26 @@
+0 Background
+1 Milk
+2 Yogurt
+3 Cheese
+4 Eggs
+5 Tea
+6 Coffee
+7 Juice
+8 Coca Cola
+9 Pepsi
+10 Flour
+11 Rice
+12 Sugar
+13 Salt
+14 Pulses
+15 Soap
+16 Detergent
+17 Surf
+18 Shampoo
+19 Toothpaste
+20 Panadol
+21 Paracetamol
+22 Bandage
+23 Biscuits
+24 Chips
+25 Bread
