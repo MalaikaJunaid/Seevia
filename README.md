@@ -210,8 +210,8 @@ Seevia was awarded **1st Prize in Artificial Intelligence FYP** at the **COMSATS
 
 The project has also participated in a **startup incubation program**, supporting its development toward product growth and commercialization.
 
-- **Malaika Junaid** — AI Lead and ML Engineer ([GitHub](https://github.com/MalaikaJunaid), [Hugging Face](https://huggingface.co/malaikajunaid))
-- **Syeda Aleeza Tahir** — Lead System Architect and Full-Stack Developer
+- **Malaika Junaid** ([GitHub](https://github.com/MalaikaJunaid), [Hugging Face](https://huggingface.co/malaikajunaid))
+- **Syeda Aleeza Tahir**
 - **Project Supervisor:** Dr. Samera Batool, Department of Computer Science, COMSATS University Islamabad
 
 ## Contributing and feedback
