@@ -1,0 +1,9 @@
+{
+    "latent_dim": 100,
+    "hidden_dim": 64,
+    "seq_len": 100,
+    "channels": 3,
+    "data_min": 0.0,
+    "data_max": 49.998779296875,
+    "description": "Metadata for GAN-generated fall signals."
+}

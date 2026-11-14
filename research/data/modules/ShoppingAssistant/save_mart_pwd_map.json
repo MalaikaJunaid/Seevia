@@ -1,0 +1,274 @@
+{
+    "store_info": {
+        "name": "Save Mart PWD",
+        "location": "Islamabad (Basement)",
+        "entry_points": [
+            {
+                "id": "main_entrance",
+                "name": "Entrance Stairs",
+                "nearby_aisles": ["Aisle 5", "Aisle 6"],
+                "description": "Basement entrance stairs located directly in front of Aisles 5 and 6."
+            }
+        ],
+        "checkout_points": [
+            {
+                "id": "counter_1",
+                "location": "In front of Aisle 7 and 8, beside entrance"
+            },
+            {
+                "id": "counter_2",
+                "location": "Exclusively in front of Aisle 9 and 10"
+            },
+            {
+                "id": "counter_3",
+                "location": "In front of Aisle 1"
+            },
+            {
+                "id": "counter_4",
+                "location": "In front of Aisle 2"
+            },
+            {
+                "id": "counter_5",
+                "location": "In front of Aisle 4, beside entrance"
+            }
+        ],
+        "sections": {
+            "Section 1": "Rice, Pulses, Frozen & Spices",
+            "Section 2": "Pasta, Ketchup, Honey, Snacks & Drinks",
+            "Section 3": "Cereals, Tin Food, Sauces & Baking Items",
+            "Section 6": "Tissues, Disposable, Room Freshners & Household Cleaning",
+            "Section 7": "Hair Care & Dental Care",
+            "Section 8": "Baby Items, Sanitary, Napkin & Lotion"
+        }
+    },
+    "aisle_data": {
+        "Aisle_1_A": {
+            "side": "Right",
+            "items": [
+                {"ur": "Baisan", "en": "Gram Flour"},
+                {"ur": "Chaawal", "en": "Rice"},
+                {"ur": "Cheeni", "en": "Sugar / White Sugar"},
+                {"ur": "Daalyn", "en": "Pulses / Lentils"},
+                {"ur": "Lal Mirch", "en": "Red Chili Powder"},
+                {"ur": "Namak", "en": "Salt"}
+            ]
+        },
+        "Aisle_1_B": {
+            "side": "Left",
+            "items": [
+                {"ur": "Aata", "en": "Flour / Whole Wheat Flour"},
+                {"ur": "Juice Carton", "en": "Juice Bulk Packs"},
+                {"ur": "Fizzy Drink", "en": "Soda / Soft Drink Cans"},
+                {"ur": "Doodh Carton", "en": "UHT Milk Cartons"}
+            ]
+        },
+        "Aisle_2_A": {
+            "side": "Right",
+            "items": [
+                {"ur": "Botal", "en": "Bottles"},
+                {"ur": "Sharbath", "en": "Syrups / Rooh Afza / Jam-e-Shirin"},
+                {"ur": "Soup Stock", "en": "Bouillon Cubes / Chicken Powder"},
+                {"ur": "Noodles", "en": "Instant Noodles / Maggi / Knorr"},
+                {"ur": "Macaroni", "en": "Macaroni / Elbow Pasta"},
+                {"ur": "Pasta", "en": "Spaghetti / Penne Pasta"}
+            ]
+        },
+        "Aisle_2_B": {
+            "side": "Left",
+            "items": [
+                {"ur": "Chaat Masala", "en": "Chaat Masala"},
+                {"ur": "Boondi", "en": "Gram Flour Pearls"},
+                {"ur": "Meeway", "en": "Dry Fruits / Almonds / Walnuts / Pistachios"},
+                {"ur": "Masala", "en": "Shan / National Spice Mixes"}
+            ]
+        },
+        "Aisle_3_A": {
+            "side": "Right",
+            "items": [
+                {"ur": "Sauce", "en": "Various Sauces"},
+                {"ur": "Spreads", "en": "Chocolate Spread / Nutella"},
+                {"ur": "Zaytoon", "en": "Olives (Black / Green)"},
+                {"ur": "Jam", "en": "Fruit Jams / Marmalade"},
+                {"ur": "Cocktail Phal", "en": "Canned Fruit Cocktail"},
+                {"ur": "Khumbi", "en": "Mushrooms (Canned / Sliced)"},
+                {"ur": "Canned Food", "en": "Tin Pack Corn / Chickpeas"}
+            ]
+        },
+        "Aisle_3_B": {
+            "side": "Left",
+            "items": [
+                {"ur": "Ketchup", "en": "Tomato Ketchup / Chilli Garlic Sauce"},
+                {"ur": "Mayonnaise", "en": "Mayo / Garlic Mayo"},
+                {"ur": "Adrak Lehsan Paste", "en": "Ginger Garlic Paste"},
+                {"ur": "Achaar", "en": "Pickle / Mixed Pickle"},
+                {"ur": "Shehad", "en": "Honey"},
+                {"ur": "Juices nectars", "en": "Fruit Nectars / Juices"}
+            ]
+        },
+        "Aisle_4_A": {
+            "side": "Right",
+            "items": [
+                {"ur": "Chai", "en": "Tea / Tapal / Lipton"},
+                {"ur": "Tea Cake", "en": "Fruit Cake / Dry Cake"}
+            ]
+        },
+        "Aisle_4_B": {
+            "side": "Left",
+            "items": [
+                {"ur": "Doodh", "en": "Milk / Tetra Pack Milk"},
+                {"ur": "Cereals", "en": "Cornflakes / Chocos"},
+                {"ur": "Custard Powder", "en": "Custard Mixes"},
+                {"ur": "Jelly", "en": "Fruit Jelly Mix"},
+                {"ur": "Baking Mix", "en": "Cake Mix / Brownie Mix"},
+                {"ur": "Cocoa Powder", "en": "Cocoa Powder"},
+                {"ur": "Brown Sugar", "en": "Brown Sugar"},
+                {"ur": "Chocolate Syrup", "en": "Chocolate Syrup / Topping"}
+            ]
+        },
+        "Aisle_5_A": {
+            "side": "Right",
+            "items": [
+                {"ur": "Coffee", "en": "Instant Coffee / Nescafe"},
+                {"ur": "Cerelac", "en": "Baby Cereal"},
+                {"ur": "Nido / Milk Powder", "en": "Powdered Milk / Optipro / Complan"},
+                {"ur": "Milo", "en": "Energy Drinks / Malt Drinks"}
+            ]
+        },
+        "Aisle_5_B": {
+            "side": "Left",
+            "items": [
+                {"ur": "Biscuits", "en": "Cookies / Sooper / Rio"},
+                {"ur": "Candies", "en": "Toffees / Gummies"},
+                {"ur": "Bubblegum", "en": "Chewing Gum"}
+            ]
+        },
+        "Aisle_6_A": {
+            "side": "Right",
+            "items": [
+                {"ur": "Spray", "en": "Mosquito Spray / Mortein"},
+                {"ur": "Airfreshners", "en": "Room Freshener"},
+                {"ur": "Cleaners", "en": "Surface Cleaners"},
+                {"ur": "Toilet Cleaner", "en": "Harpic / Flush Cleaner"},
+                {"ur": "Polish", "en": "Furniture Polish"},
+                {"ur": "Odour Control", "en": "Odour Neutralizer"}
+            ]
+        },
+        "Aisle_6_B": {
+            "side": "Left",
+            "items": [
+                {"ur": "Pampers", "en": "Diapers / Baby Pants"},
+                {"ur": "Wipes", "en": "Baby Wipes / Wet Tissues"}
+            ]
+        },
+        "Aisle_7_A": {
+            "side": "Right",
+            "items": [
+                {"ur": "Surf", "en": "Laundry Detergent / Ariel / Excel"},
+                {"ur": "Sabun (Bartan)", "en": "Dishwash Bar / Vim"},
+                {"ur": "Liquid Dishwash", "en": "Liquid Soap / Lemon Max"},
+                {"ur": "Kitchen Towel", "en": "Kitchen Rolls"}
+            ]
+        },
+        "Aisle_7_B": {
+            "side": "Left",
+            "items": [
+                {"ur": "Bin Bag", "en": "Garbage Bags"},
+                {"ur": "Sponge", "en": "Cleaning Sponge"},
+                {"ur": "Steel Spiral", "en": "Metal Scrubber"},
+                {"ur": "Foil", "en": "Aluminum Foil"},
+                {"ur": "Disposable", "en": "Plates / Spoons / Cutlery"},
+                {"ur": "Tissue", "en": "Toilet Roll / Scented Tissues"}
+            ]
+        },
+        "Aisle_8_A": {
+            "side": "Right",
+            "items": [
+                {"ur": "Toothbrush", "en": "Manual / Electric Toothbrushes"},
+                {"ur": "Toothpaste", "en": "Colgate / Sensodyne"},
+                {"ur": "Mouthwash", "en": "Listerine / Mouthwash"}
+            ]
+        },
+        "Aisle_8_B": {
+            "side": "Left",
+            "items": [
+                {"ur": "Sabun", "en": "Bath Soap / Safeguard / Lifebuoy"},
+                {"ur": "Handwash", "en": "Liquid Hand Soap / Dettol"}
+            ]
+        },
+        "Aisle_9_A": {
+            "side": "Right",
+            "items": [
+                {"ur": "Pads", "en": "Sanitary Napkins / Hygiene Pads"},
+                {"ur": "Hair Removal", "en": "Razors / Shaving Cream"},
+                {"ur": "Shower Gel", "en": "Body Wash / Shower Gel"},
+                {"ur": "Body Lotion", "en": "Moisturizer / Hand Cream"}
+            ]
+        },
+        "Aisle_9_B": {
+            "side": "Left",
+            "items": [
+                {"ur": "Shampoo", "en": "Sunsilk / Pantene / Head & Shoulders"},
+                {"ur": "Conditioner", "en": "Hair Conditioner"}
+            ]
+        },
+        "Aisle_10_A": {
+            "side": "Right",
+            "items": [
+                {"ur": "Tail", "en": "Hair Oil / Coconut Oil"},
+                {"ur": "Mask", "en": "Face Mask"},
+                {"ur": "Wax", "en": "Hair Wax / Cold Wax"},
+                {"ur": "Aloevera Gel", "en": "Aloe Vera Gel"},
+                {"ur": "Toiletries", "en": "General Toiletries"}
+            ]
+        },
+        "Aisle_10_B": {
+            "side": "Left",
+            "items": [
+                {"ur": "Perfume", "en": "Scent / Fragrance"},
+                {"ur": "Body Spray", "en": "Deodorant / Body Spray"},
+                {"ur": "Powder", "en": "Talcum Powder"}
+            ]
+        },
+        "Zone_Frozen": {
+            "location": "Between Aisle 1 and Fridges",
+            "items": [
+                {"ur": "Kabab", "en": "Shami Kabab / Seekh Kabab"},
+                {"ur": "Samosay", "en": "Samosas"},
+                {"ur": "Rolls", "en": "Spring Rolls / Chicken Rolls"},
+                {"ur": "Nuggets", "en": "Chicken Nuggets / K&Ns"},
+                {"ur": "Strips", "en": "Chicken Strips / Fillets"}
+            ]
+        },
+        "Zone_Wall_Snacks": {
+            "location": "Behind Counters 3, 4, 5",
+            "items": [
+                {"ur": "Chips", "en": "Lays / Kurkure / Wavy / Snacks"},
+                {"ur": "Double Roti", "en": "Bread / Bun / Dawn"}
+            ]
+        },
+        "Zone_Wall_Fridges": {
+            "location": "Left Wall",
+            "items": [
+                {"ur": "Paneer", "en": "Cheese / Mozzarella / Cheddar"},
+                {"ur": "Makkhan", "en": "Butter"},
+                {"ur": "Malai", "en": "Cream"},
+                {"ur": "Milkpacks", "en": "Packaged Milk / Tetra Pack"},
+                {"ur": "Thanda Pani", "en": "Chilled Water / Juice / Energy Drinks"},
+                {"ur": "Chocolate", "en": "Dairy Milk / Mars / Snickers"}
+            ]
+        },
+        "Zone_Wall_Right": {
+            "location": "Right Wall",
+            "items": [
+                {"ur": "Makeup", "en": "Makeup / Perfume"},
+                {"ur": "Accessories", "en": "Brushes / Pins / Hairbrushes / Clips"}
+            ]
+        },
+        "Zone_Wall_Back": {
+            "location": "Back Wall (Aisle 2 to 9)",
+            "items": [
+                {"ur": "Ghee", "en": "Cooking Oils / Ghee"}
+            ]
+        }
+    }
+}

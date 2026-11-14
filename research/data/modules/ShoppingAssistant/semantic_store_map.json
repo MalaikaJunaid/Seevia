@@ -1,0 +1,54 @@
+{
+  "store_metadata": {
+    "name": "Seevia Universal Semantic Base",
+    "version": "2.0",
+    "description": "Generalized retail hierarchy for autonomous navigation and intent deduction."
+  },
+  "semantic_zones": {
+    "Zone_Staples": {
+      "name": "Grains, Pulses & Dry Bulk",
+      "categories": {
+        "Grains": {
+          "brands": ["Guard", "Mughal", "Faletti"],
+          "items": ["Rice", "Baisan", "Maida", "Aata", "Sugar"],
+          "keywords": ["Chaawal", "Flour", "Lentils", "Cheeni"]
+        },
+        "Spices": {
+          "brands": ["National", "Shan", "Mehran"],
+          "items": ["Salt", "Red Chili", "Turmeric", "Masala Mix"],
+          "keywords": ["Namak", "Mirch", "Haldi", "Achaar"]
+        }
+      }
+    },
+    "Zone_Breakfast_Baking": {
+      "name": "Dairy, Tea & Baking Essentials",
+      "categories": {
+        "Beverages_Hot": {
+          "brands": ["Tapal", "Lipton", "Nescafe"],
+          "items": ["Tea", "Coffee", "Green Tea"],
+          "keywords": ["Chai", "Tea bags", "Caffeine"]
+        },
+        "Baking": {
+          "brands": ["Rossmor", "Betty Crocker", "Rafhan"],
+          "items": ["Cocoa Powder", "Baking Mix", "Custard", "Jelly", "Brown Sugar"],
+          "keywords": ["Cake", "Dessert", "Syrup", "Chocolate syrup"]
+        }
+      }
+    },
+    "Zone_Personal_Care": {
+      "name": "Hygiene & Grooming",
+      "categories": {
+        "Oral_Care": {
+          "brands": ["Colgate", "Sensodyne", "Listerine"],
+          "items": ["Toothpaste", "Toothbrush", "Mouthwash"],
+          "keywords": ["Dental", "Oral hygiene"]
+        },
+        "Body_Care": {
+          "brands": ["Lux", "Lifebuoy", "Sunsilk", "Pantene"],
+          "items": ["Soap", "Shampoo", "Conditioner", "Shower Gel"],
+          "keywords": ["Hair", "Bath", "Body wash"]
+        }
+      }
+    }
+  }
+}
