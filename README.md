@@ -1,178 +1,219 @@
-# Seevia: Voice-First Multimodal AI Ecosystem for Visually Impaired Autonomy
-> 🏆 **Winner:** Awarded **1st Prize in Artificial Intelligence FYP** at the **COMSATS Career Expo 2026**.
-[![Download APK](https://img.shields.io/badge/Download-APK-blue?style=for-the-badge&logo=android)](https://drive.google.com/file/d/1OYgzkxyoVW4f8brqlXX6AsYmIO3_so9b/view?usp=sharing)
+# Seevia
 
-**Seevia** is a voice-first, multimodal AI-powered mobile assistive platform developed at COMSATS University Islamabad to empower visually impaired persons (PWDs) to independently manage daily living, household inventories, retail navigation, and personal safety. Built to bridge the local accessibility gap in developing regions, Seevia eliminates dependence on human-in-the-loop subscriptions through an on-device, offline-resilient edge AI pipeline paired with a cloud fallback architecture.
+**Voice-first assistance for everyday independence.**
 
----
+[![Stage: MVP pre-launch](https://img.shields.io/badge/Stage-MVP%20%7C%20Pre--launch-orange?style=for-the-badge)](#launch-readiness-and-investment)
+[![React Native 0.72.10](https://img.shields.io/badge/React_Native-0.72.10-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](./package.json)
+[![Expo SDK 49](https://img.shields.io/badge/Expo-SDK_49-000020?style=for-the-badge&logo=expo)](./package.json)
+[![Five Hugging Face models](https://img.shields.io/badge/AI_Models-5-FFD21E?style=for-the-badge&logo=huggingface)](https://huggingface.co/malaikajunaid/models)
+[![COMSATS Career Expo first prize](https://img.shields.io/badge/COMSATS_Career_Expo-1st_Prize-2EA44F?style=for-the-badge)](#recognition-incubation-and-team)
+[![Startup incubation participant](https://img.shields.io/badge/Startup_Incubation-Participant-6f42c1?style=for-the-badge)](#recognition-incubation-and-team)
+[![MIT License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](./LICENSE)
 
-## 🏗️ System Architecture & Cognitive Engine
+Seevia is a fully implemented, full-featured mobile assistive-technology product developed at COMSATS University Islamabad. It brings together voice interaction, accessible interfaces, computer vision, household management, shopping assistance, and connected safety workflows to support greater independence for people with visual impairments, with particular attention to Pakistani users and Roman Urdu interaction.
 
-Seevia operates on a **Three-Tier AI Fallback Architecture** designed for high availability and offline resilience on consumer-grade Android hardware:
+> **Product and launch status:** Seevia's application, core modules, and five AI models have been implemented as a complete product. The MVP designation is a cautious pre-launch label: it does not mean the product is only a mock-up or that its core modules are missing. Further investment and refinement are needed before a broad production launch, including expanded real-world validation, operational readiness, and continued product hardening. Safety features should not be treated as a replacement for established emergency services or a verified mobility aid.
+
+[Download the Android app](https://drive.google.com/file/d/1OYgzkxyoVW4f8brqlXX6AsYmIO3_so9b/view?usp=sharing)
+
+The shared build is intended for product evaluation. Contact the team for current release and deployment information.
+
+## Who Seevia is for
+
+- **People with visual impairments:** voice-first tools for household inventory, shopping, product information, and personal safety.
+- **Caregivers and trusted contacts:** connected experiences for supporting a Seevia user and receiving shared information or alerts.
+- **Volunteers:** community response workflows for offering assistance when requested.
+- **Researchers, incubators, and development partners:** a deployed product foundation for accessibility, applied AI, and assistive-technology collaboration.
+
+Seevia is designed around the needs of people in Pakistan, including spoken English and Roman Urdu interaction patterns. Continued engagement with people with visual impairments and local accessibility experts is an important part of refining the product and preparing it for wider use.
+
+## Product modules
+
+Seevia brings together the following implemented application modules:
+
+- **Voice commands and conversational assistance:** speech input, intent recognition, spoken responses, and hands-free interaction, including English and Roman Urdu use cases.
+- **Smart pantry:** household inventory tracking, product capture, expiry reminders, allergy and dietary information, and shopping-list support.
+- **Product recognition and label understanding:** camera, barcode, and OCR workflows to help identify products and surface relevant information.
+- **Shopping assistant:** shopping-list tools, store and aisle navigation features, and route-planning logic for in-store assistance.
+- **Emergency safety and Safe Step:** SOS workflows, fall-detection services, location sharing, and trusted-contact support.
+- **Caregiver and volunteer network:** user linking, caregiver support, and community volunteer response workflows.
+- **Adaptive personalization:** preference and usage-pattern features that support more relevant reminders and suggestions.
+- **Accessible interaction:** voice feedback, haptics, high-contrast options, and screen-reader-aware UI patterns.
+
+As with any assistive product, recognition, location, and safety outputs can be affected by device conditions, connectivity, user settings, and the environment. Continue to verify critical information and maintain appropriate backup plans.
+
+## AI models
+
+Seevia includes five models that support its recognition, language, safety, and navigation capabilities. All five are published on the [Seevia Hugging Face models page](https://huggingface.co/malaikajunaid/models), so you can inspect or download individual model files without pulling every large model asset from this repository. The figures below are the project's reported evaluation results; performance can vary with hardware, data, and real-world conditions.
+
+| Model | Purpose and approach | Reported evaluation | Deployment |
+| --- | --- | --- | --- |
+| Model | Purpose and approach | Reported evaluation | Deployment |
+| --- | --- | --- | --- |
+| [**Product recognizer**](https://huggingface.co/malaikajunaid/seevia-local-product-recognizer) | YOLOv8-Nano model for 23 Pakistani product classes, trained using a 5,722-image dataset. | 87.3% mAP@50, 72.1% mAP@50-95, and 91.0% reported real-world accuracy. | Quantized TFLite, reported as 6.2 MB. |
+| [**Zero-shot product extractor**](https://huggingface.co/malaikajunaid/SEEVIA-ZEROSHOT-EXTRACTOR) | Multilingual DistilBERT token-classification model for extracting product-label information. | 88.1% overall F1; reported component metrics include 91.2% brand precision, 88.7% expiry recall, and 84.3% allergen F1. | FP16 TFLite, reported as 85 MB. |
+| [**Intent classifier**](https://huggingface.co/malaikajunaid/seevia-intent-model-improved) | FastText embeddings with a CNN and dense softmax classifier for five bilingual intents. | 87.4% overall accuracy; reported accuracy is 85.1% for Roman Urdu and 84.6% for code-switched Hinglish. | Quantized TFLite. |
+| [**Kinematic fall detector**](https://huggingface.co/malaikajunaid/seevia-fall-detector) | SVM and random-forest ensemble using motion data. | 95.8% overall accuracy, 94.3% fall recall, and a 4.2% false-alarm rate on phone-drop tests. | TFLite. |
+| [**Aisle navigator**](https://huggingface.co/malaikajunaid/SEEVIA-AISLE-NAVIGATION-DQN) | Dueling Deep Q-Network trained on synthetic store layouts and turn penalties. | 87.2% navigation success, 1.8% collision rate, and 68% fewer unnecessary 90-degree turns in the reported evaluation. | ONNX-to-TFLite workflow. |
+
+These metrics describe the model evaluations conducted for the project; they are not guarantees of accuracy or safety in every environment.
+
+## How it works
+
+Seevia combines on-device processing with connected services:
+
+- **On-device AI:** local models support product recognition, intent understanding, fall analysis, and navigation-related workflows.
+- **Cloud AI fallbacks:** configured providers such as Hugging Face, Google Vision, Gemini, and speech services can support tasks that require additional processing.
+- **Application services:** Firebase Authentication, Firestore, and Storage support identity, user data, and connected experiences.
+- **Mobile experience:** React Native and Expo provide app screens and access to device capabilities such as camera, microphone, location, motion sensors, notifications, and haptics.
+
+The app is designed to use local and connected capabilities together. Availability of cloud-backed features depends on network access, provider configuration, and the user's device. Model assets are tracked with **Git LFS**, so a complete checkout can be large.
+
+### Download only the models you need
+
+The model table links to all five Hugging Face repositories. Use the skip-LFS clone steps under **Getting started** to avoid downloading every model, then download only the model artifacts you need from Hugging Face. To retrieve all assets from Git LFS instead, run `git lfs pull` from the repository directory.
+
+### Three-tier AI pipeline
+
+The AI architecture combines on-device inference with cloud fallbacks:
+
+1. **On-device inference:** local models handle supported product, intent, motion, and navigation tasks, providing fast responses and offline capability for those workflows.
+2. **Cloud language inference:** Hugging Face services support language and product-label tasks that benefit from additional multilingual processing.
+3. **Higher-capability cloud services:** Google Cloud Vision and Gemini support more demanding image, OCR, and scene-understanding requests.
+
+The app selects an available path based on the task and model result. Cloud tiers require network access and valid provider configuration; local capability remains important for offline-resilient use.
+
+### Firebase and the Trust Circle
+
+Firebase connects the user, caregiver, and volunteer experiences. The application's data model includes:
 
 ```text
-                  +------------------------------------------+
-                  |   Input (Bilingual Audio / Video / IMU)  |
-                  +------------------------------------------+
-                                       |
-                                       v
-                  +------------------------------------------+
-                  |       Tier 1: On-Device Edge (TFLite)    |
-                  |   (YOLOv8-Nano, Anomaly SVM, FastText)   |
-                  +------------------------------------------+
-                                  /          \
-                   Confidence >= 0.75      Confidence < 0.75
-                                /              \
-                               v                v
-                 +--------------------+   +----------------------------+
-                 | Voice Synthesizer  |   | Tier 2: Cloud Inference    |
-                 | Direct TTS Output  |   | (HuggingFace Inference API)|
-                 +--------------------+   +----------------------------+
-                                                        |
-                                           Confidence < 0.75 / Fail
-                                                        |
-                                                        v
-                                          +----------------------------+
-                                          | Tier 3: Reasoning Fallback |
-                                          | (Google Vision API/Gemini) |
-                                          +----------------------------+
-                                                        |
-                                                        v
-                  +----------------------------------------------------+
-                  |    Trust Circle: Firebase Real-Time Data Sync      |
-                  |   (Firestore, FCM Dispatch, Storage, Twilio)       |
-                  +----------------------------------------------------+
-
+/users/{Auth_UID}                       # User profile, accessibility settings, and preferences
+  /pantryItems/{itemId}                 # Household inventory and expiry information
+  /shoppingLists/{listId}               # Manual and generated shopping lists
+  /ocrLogs/{logId}                      # OCR and recognition records
+  /voiceHistory/{entryId}               # Voice queries and intent history
+/trust_circle/{circleId}                # User-caregiver connection
+/emergency_logs/{logId}                 # SOS events and related location data
+/volunteers/{Auth_UID}                  # Volunteer profile and availability
+/system_configs/app_settings            # Application configuration
 ```
 
-* **Tier 1 (On-Device Edge):** Quantized `.tflite` models execute locally with GPU/CPU delegate acceleration (<120 ms latency), providing offline functionality for vision, NLP, and kinematic fall classification.
-* **Tier 2 (Cloud AI Models):** Hugging Face Inference APIs handle complex or ambiguous multilingual linguistic structures and secondary token classification.
-* **Tier 3 (High-Reasoning Cloud Services):** Google Cloud Vision API and Gemini serve as the final fallback for heavily distorted text, non-standard local packaging fonts, or scene resolution.
+Configure Firebase Security Rules for the deployment environment. User, health, voice, and location records are sensitive data and should only be collected and shared with appropriate consent and access controls.
 
----
-
-## 🤖 Deployed AI Models & Empirical Evaluation
-
-| Module / Model ID | Architecture | Dataset & Scope | Key Performance Metrics | Deployment Format |
-| --- | --- | --- | --- | --- |
-| **M-01: Product Recognizer** [`SEEVIA-LOCAL-PRODUCT-RECOGNIZER`](https://huggingface.co/malaikajunaid/seevia-local-product-recognizer) | YOLOv8-Nano | 5,722 images across 23 Pakistani product classes (Roboflow ACE & Image Recognition datasets)  | **87.3% mAP@50**, 72.1% mAP@50-95, 91.0% real-world accuracy, 80ms mobile GPU latency  | TFLite INT8 Quantized (6.2 MB)  |
-| **M-02: ZeroShot Extractor** [`SEEVIA-ZEROSHOT-EXTRACTOR`](https://huggingface.co/malaikajunaid/SEEVIA-ZEROSHOT-EXTRACTOR) | DistilBERT Multilingual (`TokenClassification`) | Pakistani product labels annotated for Named Entity Recognition (NER)  | **88.1% Overall F1-Score** (91.2% Brand Precision, 88.7% Expiry Recall, 84.3% Allergen F1)  | TFLite FP16 (85 MB)  |
-| **M-03: Intent Classifier** [`SEEVIA-INTENT-MODEL-IMPROVED`](https://huggingface.co/malaikajunaid/seevia-intent-model-improved) | FastText Embeddings + 2-Layer CNN + Dense Softmax  | 1,000+ bilingual utterances across 5 core intent classes (`navigate`, `scan_product`, `pantry`, `emergency`, `volunteer`)  | **87.4% Overall Accuracy** (85.1% Roman Urdu, 84.6% Code-switched Hinglish), <200 ms latency  | TFLite INT8  |
-| **M-04: Kinematic Fall Detector** [`SEEVIA-FALL-DETECTOR`](https://huggingface.co/malaikajunaid/seevia-fall-detector) | Ensemble: SVM (RBF Kernel) + Random Forest (200 trees)  | SisFall Dataset (1,820 samples) + 240 custom phone-drop captures  | **95.8% Overall Accuracy**, 94.3% Fall Recall, **4.2% False Alarm Rate** on phone drops  | TFLite (<100 ms window at 50Hz)  |
-| **M-05: Aisle Navigator** [`SEEVIA-AISLE-NAVIGATION-DQN`](https://huggingface.co/malaikajunaid/SEEVIA-AISLE-NAVIGATION-DQN) | Dueling Deep Q-Network (MLP: 256-128-64)  | 10,000 synthetic store topological layouts with turn penalties  | **87.2% Navigation Success Rate**, 1.8% collision rate, 68% reduction in unnecessary 90° turns | ONNX → TFLite  |
-
----
-
-## 🧩 Core Ecosystem Modules
-
-* **Voice Command & NLP Interface:** Real-time speech understanding handling natural codeswitched Roman Urdu and English (e.g., *"Doodh ki expiry kya hai?"* or *"Mujhe aisle 3 le jao"*).
-* **Smart Pantry Management:** Automated household inventory tracking using camera recognition and Google ML Kit OCR. Automatically flags expiring items (<= 3 days), cross-references user allergen profiles, and auto-generates replenishment shopping lists.
-* **In-Store Shopping Assistant:** Camera-based object detection matched with reinforcement learning-driven path planning to direct users through aisles while avoiding static and dynamic obstacles.
-* **Emergency Safety Hub & Safe Step:** Kinematic fall detection running continuously at 50Hz. Falls trigger an audible/haptic 15-second cancellation window before auto-dispatching GPS coordinates to emergency contacts via Firebase Cloud Messaging (FCM).
-* **Volunteer Response Network:** Community-based emergency response dispatching proximity-based alerts within a 5 km radius if primary caregivers do not acknowledge an SOS within 60 seconds.
-* **Adaptive Personalization:** Behavioral preference modeling utilizing Markov-chain analysis to predict consumption habits and tailor proactive voice suggestions.
-
----
-
-## 🗄️ Firestore Database & Security Rules
-
-All entities are linked via Firebase Authentication `Auth_UID` with role-based access rules :
-
-```text
-/users/{Auth_UID}                        # Profile details, accessibility settings, health data, caregiver ID
-  ├── /pantryItems/{itemId}              # Item metadata, expiration timestamps, Base64/Storage URLs
-  ├── /shoppingLists/{listId}            # Auto-generated and manual shopping lists
-  ├── /ocrLogs/{logId}                   # Raw OCR captures and model inference audit logs
-  └── /voiceHistory/{id}                 # Transcribed queries, mapped intents, and latency metrics
-/trust_circle/{circleId}                 # Bidirectional verification link between PWD and Caregiver
-/emergency_logs/{logId}                  # Real-time SOS triggers, sensor telemetry, and GeoPoints
-/volunteers/{Auth_UID}                   # Verified volunteer availability, rating, and location updates
-/system_configs/app_settings             # Global runtime parameters (fallback thresholds, timeouts)
-
-```
-
----
-
-## 🛠️ Installation & Environment Setup
+## Getting started
 
 ### Prerequisites
 
-* **Node.js:** >= 18.x
-* **Framework:** Expo CLI with EAS Build support 
-* **Target Hardware:** Android device with minimum API Level 28 (Pie), rear camera, microphone, and IMU sensors 
+- Node.js 18 or newer
+- npm
+- Git and Git LFS
+- Android Studio or an Android device for native testing
 
-### Installation Steps
+The project also declares iOS and web targets, but their build and runtime behavior should be validated separately. Some native modules require an Expo development build; Expo Go compatibility is not guaranteed.
 
-1. **Clone the repository:**
+### Clone and install without downloading every model
+
 ```bash
-git clone https://github.com/MalaikaJunaid/Seevia.git
+git lfs install
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/MalaikaJunaid/Seevia.git
 cd Seevia
-
+npm ci
 ```
 
+For Windows PowerShell, set the skip-smudge option before cloning:
 
-2. **Install dependencies:**
-```bash
-npm install
-
+```powershell
+git lfs install
+$env:GIT_LFS_SKIP_SMUDGE = "1"
+git clone https://github.com/MalaikaJunaid/Seevia.git
+Remove-Item Env:GIT_LFS_SKIP_SMUDGE
+cd Seevia
+npm ci
 ```
 
+The clone leaves LFS pointer files in model asset paths. Download only the needed artifacts from the model pages above. To retrieve all model assets from Git LFS instead, clone normally or run `git lfs pull` from the repository directory.
 
-3. **Configure Environment Keys:**
-Create a `.env` file in the project root:
-```env
-# ---------------------------------------------------------
-# 🔐 Firebase (Core Backend)
-# ---------------------------------------------------------
-EXPO_PUBLIC_FIREBASE_API_KEY=your_firebase_key
-EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=seevia-fypii.firebaseapp.com
-EXPO_PUBLIC_FIREBASE_PROJECT_ID=seevia-fypii
-EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=seevia-fypii.appspot.com
-EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-EXPO_PUBLIC_FIREBASE_APP_ID=your_app_id
+**Dependency note:** the current dependency declarations have a peer-version conflict between `@picovoice/porcupine-react-native` 4.x and React Native 0.72.10. As a temporary development workaround, `npm ci --legacy-peer-deps` may install the lockfile, but it bypasses npm's peer-dependency check; it does not resolve or validate that compatibility issue. Align and test the dependency versions as part of release preparation.
 
-# ---------------------------------------------------------
-# 🧠 AI / Cloud Inference Keys
-# ---------------------------------------------------------
-EXPO_PUBLIC_GOOGLE_CLOUD_API_KEY=your_google_vision_or_gemini_key
-EXPO_PUBLIC_DEEPGRAM_API_KEY=your_deepgram_key
-EXPO_PUBLIC_HUGGINGFACE_API_KEY=your_huggingface_key
-EXPO_PUBLIC_OPENAI_API_KEY=your_openai_key
-EXPO_PUBLIC_GEMINI_API_KEY=your_gemini_key
+### Configure services
 
-# ---------------------------------------------------------
-# 🗺️ Navigation / Mapping
-# ---------------------------------------------------------
-EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN=your_mapbox_token
+Create a `.env` file in the project root and add the Firebase values for your own Firebase project:
 
-# ---------------------------------------------------------
-# 🚨 SOS Alerts (Firebase Cloud Messaging)
-# ---------------------------------------------------------
-EXPO_PUBLIC_FCM_SERVER_KEY=your_fcm_server_key
-EXPO_PUBLIC_FCM_SENDER_ID=your_sender_id
-
-# ---------------------------------------------------------
-# ⚙️ App Environment
-# ---------------------------------------------------------
-EXPO_PUBLIC_APP_ENV=development
-EXPO_PUBLIC_DEBUG_MODE=true
-
-
+```dotenv
+EXPO_PUBLIC_FIREBASE_API_KEY=
+EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=
+EXPO_PUBLIC_FIREBASE_PROJECT_ID=
+EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=
+EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+EXPO_PUBLIC_FIREBASE_APP_ID=
 ```
 
+Optional integrations read these variables when the corresponding feature is used:
 
-4. **Start the Application:**
+```dotenv
+EXPO_PUBLIC_GOOGLE_CLOUD_API_KEY=
+EXPO_PUBLIC_GEMINI_API_KEY=
+EXPO_PUBLIC_GROQ_API_KEY=
+EXPO_PUBLIC_HUGGINGFACE_API_KEY=
+EXPO_PUBLIC_DEEPGRAM_API_KEY=
+EXPO_PUBLIC_OPENAI_API_KEY=
+EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN=
+```
+
+Only configure providers you intend to use. Availability depends on provider accounts, API access, and network connectivity.
+
+**Credential note:** Expo `EXPO_PUBLIC_*` values are included in the client app and must be treated as public. Do not put server secrets, private service credentials, or unrestricted API keys in the mobile bundle. Restrict client keys appropriately and put privileged operations behind a secured backend. Firebase client configuration is not a substitute for correctly configured Firebase Security Rules.
+
+### Start the development server
+
 ```bash
 npx expo start
-
 ```
 
+Use the Expo development build or platform workflow appropriate for the native modules you are testing.
 
+## Launch readiness and investment
 
----
+Seevia is a full-fledged implemented app product. The MVP label is used as a **precaution for launch planning**, not as a description of missing core modules. Investment and focused refinement will help prepare the product for a broader production release, including:
 
-## 👥 Research & Development Team
+- Continued accessibility and usability evaluation with people with visual impairments and local experts.
+- Expanded model validation across devices, environments, languages, and real-world product data.
+- Further reliability, performance, and platform compatibility testing for release builds.
+- Operational investment in hosting, backend services, support, monitoring, and product maintenance.
+- Ongoing review of privacy, consent, Firebase authorization rules, credential handling, and applicable requirements for personal, health, and location data.
+- Continued safety evaluation of fall detection, SOS delivery, location sharing, and failure handling.
 
-* **Malaika Junaid** (CIIT/FA22-BAI-020/ISB) — *AI Lead & ML Engineer*  — [GitHub](https://github.com/MalaikaJunaid) | [Hugging Face]([https://www.google.com/search?q=https://huggingface.co/malaikajunaid](https://huggingface.co/malaikajunaid)
-* **Syeda Aleeza Tahir** (CIIT/FA22-BAI-038/ISB) — *Lead System Architect & Full-Stack Developer* 
-* **Project Supervisor:** **Dr. Samera Batool** — Department of Computer Science, COMSATS University Islamabad 
+Seevia's safety and navigation tools are intended to support independence, not replace emergency services, caregivers, or established mobility aids. Production deployment should follow appropriate testing and operational readiness.
+
+## Repository layout
+
+```text
+src/
+  app/          Expo Router screens and route layouts
+  assets/       Images, fonts, data, and model files
+  components/   Shared and feature-specific UI components
+  constants/    App settings, categories, and commands
+  hooks/        React hooks for app features
+  models/       Domain and data types
+  navigation/   Navigation helpers and types
+  screens/      Screen implementations
+  services/     Firebase, AI, voice, pantry, shopping, and safety services
+  theme/        Theme and accessibility tokens
+  themes/       Additional theme definitions
+  utils/        Shared utility functions
+```
+
+## Recognition, incubation, and team
+
+Seevia was awarded **1st Prize in Artificial Intelligence FYP** at the **COMSATS Career Expo 2026**.
+
+The project has also participated in a **startup incubation program**, supporting its development toward product growth and commercialization.
+
+- **Malaika Junaid** — AI Lead and ML Engineer ([GitHub](https://github.com/MalaikaJunaid), [Hugging Face](https://huggingface.co/malaikajunaid))
+- **Syeda Aleeza Tahir** — Lead System Architect and Full-Stack Developer
+- **Project Supervisor:** Dr. Samera Batool, Department of Computer Science, COMSATS University Islamabad
+
+## Contributing and feedback
+
+Feedback from people with visual impairments, caregivers, accessibility specialists, and developers is welcome. When reporting an issue, include the device and OS, the steps to reproduce it, and whether the feature was tested with demo data, Firebase, or an external provider. Please do not include personal, health, location, or credential data in public issue reports.
